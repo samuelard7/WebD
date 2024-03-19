@@ -1,0 +1,32 @@
+#sanskar{
+    font-family: Caveat, cursive;
+    font-optical-sizing: auto;
+    color: black;
+    font-size:20px;
+    margin-top: 0;
+    margin-left: 70%;
+    position: static;
+    
+}
+.sd{
+    margin-left: 5px;
+    height: 60px;
+    width: 80px;
+    
+}
+
+#sanskar1{
+    background-color: ghostwhite;
+}
+footer{
+    padding:3px;
+    background-color:darkgrey;
+    text-align: center;
+    font-size: small;
+    margin-top: auto;
+}
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
