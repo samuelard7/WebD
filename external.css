@@ -14,14 +14,14 @@
     color: black;
     font-size:22px;
     top:14px;
-    right:7px;
+    right:6px;
     position: absolute;
 }
 .sd{
     margin-left: 5px;
     height: 70px;
     width: 80px;
-    
+  
 }
 
 
@@ -38,6 +38,18 @@ body{
     display:flex;
     flex-direction: column;
 }
-.same{
-margin-left: 16%;
-}
+
+label {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1c87c9;
+  }
+  input {
+    width: 50%;
+    height: 23px;
+    padding: 4px 10px;
+    border: 1px solid #ceb5b5;
+    background: #cce6ff;
+    color:darkslategrey;
+    font-size: 19px;
+  }
