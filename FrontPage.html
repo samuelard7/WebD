@@ -14,9 +14,7 @@
     <title>QuizTrivia</title>
     <script>
         
-        function func(){
-           print('hello');
-        }
+      console.log('Working')
     </script>
 </head>
 <body>
@@ -33,11 +31,19 @@
          </a>
     </div>
     <div>
-    <marquee  style="padding:20px;background-color: grey;">Brainy Quotes</marquee>
+    <marquee style="padding:20px;background-color: grey;">Brainy Quotes</marquee>
 </div>
-    <h2>Moving Images here</h2>
+    <h2 style="font-weight: bold; font-family: 'Courier New', Courier, monospace;">SELECT CATEGORY</h2>
     
-    <div><button onclick=func() class="content">SELECT CATEGORY</button></div>
+    <div>
+        <select id="content" name="CATEGORY">
+        <option value="animal">Animal</option>
+        <option value="book">Books</option>
+        <option value="maths">Maths</option>
+        <option value="sports">Sports</option>
+        <option value="gk">General Knowledge</option>
+    </select>
+</div>
  
     <footer><p> Developers: Sanskar, Satyam, Richard <br>
         <a href="https://github.com/samuelard7/WebD.git">github</a>
