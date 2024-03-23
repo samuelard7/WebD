@@ -12,12 +12,30 @@
    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuizTrivia</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" type="text/javascript"></script>
     <script>
-        
-      console.log('Working')
+function hens(){ 
+            
+        var category = 'intelligence'
+$.ajax({
+    method: 'GET',
+    url: 'https://api.api-ninjas.com/v1/quotes?category=' + category,
+    headers: { 'X-Api-Key': '7K/GACTSzVjiJJG0f2PYIw==32Q00LPbmqWZStQl'},
+    contentType: 'application/json',
+    success: function(result) {
+        console.log(result);
+        document.getElementById('checks').innerText=JSON.stringify(result[0]['quote']);
+    
+    },
+    error: function ajaxError(jqXHR) {
+        console.error('Error: ', jqXHR.responseText);
+        document.getElementById('checks').innerHTML="error";
+    }
+});
+}
     </script>
 </head>
-<body>
+<body >
     <div style="background-color: ghostwhite;">
      <img class="sd" src="./android-chrome-192x192.png">
     
@@ -31,12 +49,12 @@
          </a>
     </div>
     <div>
-    <marquee style="padding:20px;background-color: grey;">Brainy Quotes</marquee>
+    <marquee id="checks" style="padding:20px;background-color: grey;" onclick=hens()>Brainy Quotes!!! Touch Me</marquee>
 </div>
     <h2 style="font-weight: bold; font-family: 'Courier New', Courier, monospace;">SELECT CATEGORY</h2>
-    
+   
     <div>
-        <select id="content" name="CATEGORY">
+    <select id="content" name="CATEGORY" >
         <option value="animal">Animal</option>
         <option value="book">Books</option>
         <option value="maths">Maths</option>
