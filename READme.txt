@@ -1,4 +1,4 @@
-The source can be found in the following github link :--->
+The source code can be found in the following github link :--->
 https://github.com/samuelard7/WebD.git
 
 The project is not fully functional as there are some backend, interaction
@@ -14,3 +14,14 @@ The changes can be seen in github main branch.
 3. main.py have all the modules linked and classes, db connectivity and all. 
 
 4. All the dependencies are in main.py 
+
+5. Dependencies to be installed 
+
+Flask
+Wtforms
+SQLAlchemy
+6. Installing Guidance:
+Inside the terminal of vscode 
+pip install flask
+pip install wtforms
+pip install sqlalchemy
