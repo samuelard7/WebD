@@ -1,0 +1,75 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="./external.css">
+
+
+    <meta charset="UTF-8">
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizTrivia</title>
+  
+</head>
+<body >
+    <div style="background-color: ghostwhite;">
+     <img class="sd" src="./android-chrome-192x192.png">
+    
+        <a href='./about.html' id="sanskar"> 
+        About 
+ 
+        </a>
+    
+        <a href='./contactus.html' id="sanskar2"> 
+             Contact us
+         </a>
+    </div>
+    <div>
+    <marquee id="checks" style="padding:20px;background-color: grey;" onclick=hens()>Brainy Quotes!!! Touch Me</marquee>
+</div>
+    <h2 style="font-weight: bold; font-family: 'Courier New', Courier, monospace;">SELECT CATEGORY</h2>
+   
+    <div>
+    <select id="content" name="CATEGORY" >
+        <option value="animal">Animal</option>
+        <option value="book">Books</option>
+        <option value="maths">Maths</option>
+        <option value="sports">Sports</option>
+        <option value="gk">General Knowledge</option>
+    </select>
+</div>
+ 
+    
+   
+</body>
+
+</html>
+ -->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+   
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+  
+    <footer><p> Developers: Sanskar, Satyam, Richard <br>
+        <a href="https://github.com/samuelard7/WebD.git">github</a>
+    </p>
+    </footer>
+
+
+-->
+
+
+{% extends 'Base.html' %}
+
+{% block title %}
+    Home Page
+{% endblock %}
+
+{%block content %}
+
+<div class="text-center">
+<h1> Welcome to the Quiz</h1>
+<button class="btn btn-primary" onclick="{{url_for('game_play')}}">Play</button>
+</div>    
+<script src="./game.js"></script>
+{% endblock %}

@@ -1,0 +1,41 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comment Section</title>
+    <link rel="stylesheet" href="comm.css">
+</head>
+<body>
+    <div class="comment-box">
+        <p>Contact Us</p>
+        <form class="comment-form">
+            <input type="text"placeholder="Name">
+            <input type="email"placeholder="Email">
+            <input type="text"placeholder="Mobile">
+            <textarea cols="30" rows="10" placeholder="Write your Query"></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    
+</body>
+</html> -->
+
+{% extends 'Base.html' %}
+
+{% block title %}
+    Contact
+{% endblock %}
+
+{% block content %}
+<div class="comment-box">
+  <p>Contact Us</p>
+  <form class="comment-form">
+      <input type="text"placeholder="Name">
+      <input type="email"placeholder="Email">
+      <input type="text"placeholder="Mobile">
+      <textarea cols="30" rows="10" placeholder="Write your Query"></textarea>
+      <button type="submit">Send</button>
+  </form>
+</div>
+{% endblock %}
