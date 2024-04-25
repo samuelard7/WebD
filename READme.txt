@@ -14,3 +14,20 @@ The changes can be seen in github main branch.
 3. main.py have all the modules linked and classes, db connectivity and all. 
 
 4. All the dependencies are in main.py 
+
+5. Dependencies to be installed 
+
+Flask
+Wtforms
+SQLAlchemy
+6. Installing Guidance:
+Inside the terminal of vs code 
+pip install flask
+pip install wtforms
+pip install sqlalchemy
+
+6. For managing the database 
+Install pgAdmin 4 
+server login details:
+username : quiztriviadb
+password : password
