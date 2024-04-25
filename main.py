@@ -74,7 +74,9 @@ def search_data():
         pass_word = data[i][2]
         if user_name == usernamefield and password_field == pass_word:
             return render_template('Success_HomePage.html',name=usernamefield)
-        flash(f'User Not Registered',category="danger")
+        else:
+            flash('User Not Found',category="danger")
+            return render_template('HomePage.html')
     return render_template('Login.html')
 @app.route('/Register',methods=['GET','POST'])
 def register_page():
@@ -83,9 +85,9 @@ def register_page():
     cur = conn.cursor()
     cur.execute('''CREATE TABLE IF NOT EXISTS userinfo 
             (id SERIAL PRIMARY KEY,
-            username varchar(50),
-            password varchar(50),
-            email_address varchar(50));
+            username varchar(50) NOT NULL,
+            password varchar(50) NOT NULL,
+            email_address varchar(50) NOT NULL UNIQUE);
             ''')
     if form.validate_on_submit():
         cur.execute(
@@ -95,6 +97,7 @@ def register_page():
             conn.commit()
             cur.close()
             conn.close()
+            flash('Successfully Created.', category='success')
             return render_template('Success_HomePage.html',name=name)
         return redirect(url_for('home_page',message="Failed"))
     if form.errors != {}:
