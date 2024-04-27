@@ -9,7 +9,7 @@ import psycopg2
 
 app = Flask(__name__, template_folder="templates")
 app.config['SQLALCHEMY_DATABASE_URI']='postgresql://quiztriviadb:password@localhost/user'
-app.config['SECRET_KEY']='6871ff06b5fb8asdq12asd667dd73300f'
+app.config['SECRET_KEY']= '12312312345345'
 my_email = "samuelrichard214@gmail.com"
 password = "ebsv xtyp eeuc pufg"
 db = SQLAlchemy(app)

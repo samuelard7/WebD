@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Quizzify</title>
+    <link rel="stylesheet" href="./app.css" />
+    <link rel="icon" type="image/jpg" href="./assets/logo.jpg">
+    <meta name="google-site-verification" content="iNzSj2wvdEOVu1PtrK5FfEiu_teOG2LQn5i3kg-xozQ" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" type="text/javascript"></script>
+    <script>
+function hens(){ 
+            
+        var category = 'intelligence'
+$.ajax({
+    method: 'GET',
+    url: 'https://api.api-ninjas.com/v1/quotes?category=' + category,
+    headers: { 'X-Api-Key': '7K/GACTSzVjiJJG0f2PYIw==32Q00LPbmqWZStQl'},
+    contentType: 'application/json',
+    success: function(result) {
+        console.log(result);
+        document.getElementById('checks').innerText=JSON.stringify(result[0]['quote']);
+    
+    },
+    error: function ajaxError(jqXHR) {
+        console.error('Error: ', jqXHR.responseText);
+        document.getElementById('checks').innerHTML="error";
+    }
+});
+}
+    </script>
+  </head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3775445581945009"
+     crossorigin="anonymous"></script>
+     
+  <body>
+    <div>
+      <marquee id="checks" style="padding:20px;background-color: #1abc9c;" onclick=hens()>Brainy Quotes!!! Touch Me</marquee>
+  </div>
+    <div class="container">
+      <div id="home" class="flex-center flex-column">
+        <h1>The Quizzify Game</h1>
+        <a class="btn" href="./game.html">Play</a>
+        <a class="btn" href="./highscores.html">High Scores</a>
+      </div>
+    </div>
+  </body>
+</html>
