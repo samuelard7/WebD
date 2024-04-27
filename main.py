@@ -1,23 +1,26 @@
 from flask import Flask, render_template, redirect, url_for,current_app, flash, request
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.dialects.postgresql import UUID
-from forms import RegisterForm
+from forms import RegisterForm, Recovery
+import smtplib
+import random
 import psycopg2
 
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="templates")
 app.config['SQLALCHEMY_DATABASE_URI']='postgresql://quiztriviadb:password@localhost/user'
-app.config['SECRET_KEY']='6871ff06b5fb8f0fdd73300f'
+app.config['SECRET_KEY']='6871ff06b5fb8asdq12asd667dd73300f'
+my_email = "samuelrichard214@gmail.com"
+password = "ebsv xtyp eeuc pufg"
 db = SQLAlchemy(app)
 
 app.app_context().push()
 
-
 def db_conn():
     conn = psycopg2.connect(dbname = "user", 
-                        user = "richard_quant", 
+                        user = "quiztriviadb", 
                         host= 'localhost',
-                        password = "$*CO8I3m",
+                        password = "password",
                         port = 5432)
 
    
@@ -40,6 +43,13 @@ class userinfo(db.Model):
     email_address = db.Column(db.String(length=50),nullable=False)
     # entry = db.relationship('Entries',backref='owned_user',lazy=True)
   
+  
+def otp_generate():
+    l = ['0','1','2','3','4','5','6','7','8','9']
+    otp = ""
+    for i in range(6):
+        otp = otp + random.choice(l)
+    return otp
 @app.route('/')
 @app.route('/Front')
 def front_page():
@@ -52,6 +62,7 @@ def home_page():
 @app.route('/About')
 def about_us():
     return render_template('About.html')
+
 
 @app.route('/LoginPage')
 def login_page():
@@ -73,11 +84,12 @@ def search_data():
         user_name = data[i][1]
         pass_word = data[i][2]
         if user_name == usernamefield and password_field == pass_word:
-            return render_template('Success_HomePage.html',name=usernamefield)
-        else:
-            flash('User Not Found',category="danger")
-            return render_template('HomePage.html')
-    return render_template('Login.html')
+            flash(f'Hello {user_name}',category="success")
+            return redirect(url_for('home_page'))
+       
+    flash('User Not Found',category="danger")
+    return render_template('HomePage.html')
+    
 @app.route('/Register',methods=['GET','POST'])
 def register_page():
     form = RegisterForm()
@@ -91,7 +103,8 @@ def register_page():
             ''')
     if form.validate_on_submit():
         cur.execute(
-            '''INSERT INTO userinfo(username,password,email_address) VALUES(%s,%s,%s)''',(form.username.data,form.passw.data,form.email_address.data))
+            '''INSERT INTO userinfo(username,password,email_address) VALUES(%s,%s,%s)''',
+            (form.username.data,form.passw.data,form.email_address.data))
         if request.method == 'POST':
             name = request.form.get('username')
             conn.commit()
@@ -105,9 +118,37 @@ def register_page():
             flash(f'Error: {err_msg}', category="danger")
     return render_template('Register.html',form=form)
 
+
+@app.route('/Recovery',methods=['GET','POST'])
+def forgot_password():
+    form = Recovery()
+    conn = db_conn()
+    cur = conn.cursor()
+    if form.validate_on_submit():
+        cur.execute('''select email_address from userinfo''')
+        if request.method == 'POST' or request.method == 'GET':
+            email_entry = request.form.get('email_add')
+            data = cur.fetchall()
+           
+            for i in range(len(data)):
+                if data[i][0]==email_entry:
+                    flash("User Found", category="success")
+                    return render_template('Forgot_password_otp.html',email = email_entry,form=form)
+                
+            flash(f'No user with email {email_entry} found! please register your account.',category="danger")
+            return redirect(url_for('register_page'))
+               
+    if form.errors != {}:
+        for err_msg in form.errors.values():
+            flash(f'Error: {err_msg}', category="danger")
+    return render_template('Forgot_password.html',form=form)              
+            
+    
+   
 @app.route('/Game')
 def game_play():
     return render_template('game.html')
+
 
 
 

@@ -9,3 +9,14 @@ class RegisterForm(FlaskForm):
     email_address =StringField(label='Email', validators=[Email()])
     submit = SubmitField(label='Submit')
     
+class Recovery(FlaskForm):
+
+    email_add =StringField(label='Email', validators=[Email()])
+    otp = PasswordField(label='OTP',validators=[Length(max=6)])
+    submit = SubmitField(label='Submit')
+
+      
+    
+
+
+    
