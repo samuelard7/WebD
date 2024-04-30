@@ -3,15 +3,6 @@ var user_category = document.getElementById('uc').value;
 var no_of_questions_input = parseInt(document.getElementById('noq').value);
 var difficulty_of_question = document.getElementById('doq').value;
 
-console.log(no_of_questions_input)
-
-kls = difficulty_of_question.toString().value;
-if (user_category == "General Knowledge"){
-    user_category =9;
-}
-else if(user_category=="Mathematics"){
-    user_category=19;
-}
 const choices = Array.from(document.getElementsByClassName('choice-text'));
 const progressText = document.getElementById('progressText');
 const scoreText = document.getElementById('score');
@@ -86,11 +77,14 @@ getNewQuestion = () => {
 
     const questionIndex = Math.floor(Math.random() * availableQuesions.length);
     currentQuestion = availableQuesions[questionIndex];
-    question.innerText = currentQuestion.question;
+    const decodedQuestion = decodeURIComponent(currentQuestion.question);
+    question.innerHTML = decodedQuestion;
+
 
     choices.forEach((choice) => {
         const number = choice.dataset['number'];
-        choice.innerText = currentQuestion['choice' + number];
+        const decodedChoice = decodeURIComponent(currentQuestion['choice' + number]);
+        choice.innerHTML = decodedChoice;
     });
 
     availableQuesions.splice(questionIndex, 1);
@@ -126,77 +120,3 @@ incrementScore = (num) => {
     scoreText.innerText = score;
 };
 
-
-// const question = document.getElementById('question');
-// const userCategory = document.getElementById('uc').value.toLowerCase();
-// const numberOfQuestions = parseInt(document.getElementById('noq').value);
-// const difficultyOfQuestion = document.getElementById('doq').value.toLowerCase();
-
-// let score = 0;
-// let questionCounter = 0;
-// let questions = [];
-
-// const fetchQuestions = async () => {
-//     const response = await fetch(`https://opentdb.com/api.php?amount=${numberOfQuestions}&category=${getCategoryCode(userCategory)}&difficulty=${difficultyOfQuestion}&type=multiple`);
-//     const data = await response.json();
-//     questions = data.results.map(formatQuestion);
-//     startGame();
-// };
-
-// const formatQuestion = (loadedQuestion) => {
-//     const formattedQuestion = {
-//         question: loadedQuestion.question,
-//         choices: [...loadedQuestion.incorrect_answers],
-//         correctAnswer: loadedQuestion.correct_answer
-//     };
-//     formattedQuestion.choices.splice(Math.floor(Math.random() * 4), 0, formattedQuestion.correctAnswer);
-//     return formattedQuestion;
-// };
-
-// const getCategoryCode = (category) => {
-//     switch (category) {
-//         case "general knowledge":
-//             return 9;
-//         case "mathematics":
-//             return 19;
-//         default:
-//             return 9;
-//     }
-// };
-
-// const startGame = () => {
-//     questionCounter = 0;
-//     score = 0;
-//     getNewQuestion();
-// };
-
-// const getNewQuestion = () => {
-//     if (questionCounter >= numberOfQuestions) {
-//         localStorage.setItem('mostRecentScore', score);
-//         window.location.href = 'http://127.0.0.1:3000/templates/end.html';
-//         return;
-//     }
-//     const currentQuestion = questions[questionCounter];
-//     question.innerText = currentQuestion.question;
-
-//     const choiceElements = document.getElementsByClassName('choice-text');
-//     Array.from(choiceElements).forEach((choice, index) => {
-//         choice.innerText = currentQuestion.choices[index];
-//         choice.onclick = () => checkAnswer(choice, currentQuestion);
-//     });
-
-//     questionCounter++;
-// };
-
-// const checkAnswer = (selectedChoice, currentQuestion) => {
-//     const selectedAnswer = selectedChoice.innerText;
-//     const classToApply = selectedAnswer === currentQuestion.correctAnswer ? 'correct' : 'incorrect';
-//     if (classToApply === 'correct') score += 10;
-//     selectedChoice.parentElement.classList.add(classToApply);
-//     setTimeout(() => {
-//         selectedChoice.parentElement.classList.remove(classToApply);
-//         getNewQuestion();
-//     }, 1000);
-// };
-
-// fetchQuestions();

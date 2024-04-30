@@ -86,8 +86,13 @@
     
  
      {% block content %}
-
-     {% endblock %}
+     <div>
+     <div class="text-center">
+                 <h1>Welcome {{name}}</h1>
+                 <button class="btn btn-dark" name="on_submit"><a href="{{ url_for('front_page') }}">Go to Quiz</a></button>
+     </div>
+    </div>
+    {% endblock %}
 
       
       <!-- Optional JavaScript -->

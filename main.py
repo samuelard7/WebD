@@ -2,6 +2,8 @@ from flask import Flask, render_template, redirect, url_for,current_app, flash, 
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.dialects.postgresql import UUID
 from forms import RegisterForm, Recovery, QueryForm
+from bs4 import BeautifulSoup
+import requests
 import smtplib
 import random
 import psycopg2
@@ -14,6 +16,9 @@ profile = f"Hello {nameProfile}"
 user_cat = ""
 user_noq = ""
 user_diff = ""
+print(user_cat)
+print(user_noq)
+print(user_diff)
 
 app = Flask(__name__, template_folder="templates")
 app.config['SQLALCHEMY_DATABASE_URI']='postgresql://quiztriviadb:password@localhost/user'
@@ -65,21 +70,13 @@ def otp_generate():
 
 
 @app.route('/')
+def home():
+    return render_template('Base.html',name = nameProfile)
 @app.route('/Front')
 def front_page():
-    return render_template('HomePage.html')
+    
+    return render_template('HomePage.html',name= nameProfile)
 
-@app.route('/Front',methods=['POST','GET'])
-def test():      
-    global user_cat, user_diff,user_noq
-    user_cat = request.form['category']
-    user_diff= request.form['difficulty']
-    user_noq = request.form['no_of_questions']
-    return redirect(url_for('game_play'))  
-
-@app.route('/Home')
-def home_page():
-    return render_template('Success_HomePage.html')
 
 
 @app.route('/About')
@@ -125,7 +122,7 @@ def contact_page():
             cur.close()
             conn.close()
             flash('Successfully Sended.', category='success')
-            return render_template('Success_HomePage.html',name=usr_name)
+            return render_template('HomePage.html',name=usr_name)
   
         
     return render_template('Contact.html',name=profile, form=form)
@@ -149,10 +146,10 @@ def search_data():
             conn.close()
             nameProfile = usernamefield
             flash(f'Success',category="success")
-            return redirect(url_for('front_page'))
+            return redirect(url_for('home'))
        
     flash('User Not Found Create new Account',category="danger")
-    return redirect(url_for('front_page'))
+    return redirect(url_for('home'))
     
 @app.route('/Register',methods=['GET','POST'])
 def register_page():
@@ -175,8 +172,8 @@ def register_page():
             cur.close()
             conn.close()
             flash('Successfully Created.', category='success')
-            return render_template('Success_HomePage.html',name=name)
-        return redirect(url_for('home_page',message="Failed"))
+            return render_template('HomePage.html',name=name)
+        return redirect(url_for('home',message="Failed"))
     if form.errors != {}:
         for err_msg in form.errors.values():
             flash(f'Error: {err_msg}', category="danger")
@@ -246,17 +243,19 @@ def forgot_password_otp():
         
 
    
-@app.route('/Game',methods=['POST','GET'])
+@app.route('/Front',methods=['POST','GET'])
 def game_play():
-   
+    global user_cat, user_diff,user_noq
+    user_cat = request.form['category']
+    user_diff= request.form['difficulty']
+    user_noq = request.form['no_of_questions']
     user_category = user_cat
     no_of_question = user_noq
     difficulty_of_questions = user_diff
-    print(user_category)
-    print(no_of_question)
-    print(difficulty_of_questions)
-
-    return render_template('game.html',uc = user_category, noq=no_of_question,doq=difficulty_of_questions)
+    print(user_cat)
+    print(user_noq)
+    print(user_diff)
+    return render_template('game.html',uc = user_category, noq=no_of_question,doq=difficulty_of_questions,un = nameProfile)
 
 
 
@@ -268,5 +267,5 @@ def end():
 if __name__ == "__main__":
     app.run(debug=True)
 
-
-
+    
+    

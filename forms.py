@@ -21,8 +21,6 @@ class QueryForm(FlaskForm):
     person_message=StringField(label='Message', validators=[Length(max=300), DataRequired()])
     submit = SubmitField(label='Submit')
     
-
-
       
     
 
