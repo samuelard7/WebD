@@ -26,15 +26,18 @@
 {% block title %}
     Contact
 {% endblock %}
-
+{% block navbar%} 
+<h6 id="check" style="margin-top:10px">{{name}}</h6>
+{% endblock %}
 {% block content %}
 <div class="comment-box">
   <p>Contact Us</p>
-  <form class="comment-form">
-      <input type="text"placeholder="Name">
-      <input type="email"placeholder="Email">
-      <input type="text"placeholder="Mobile">
-      <textarea cols="30" rows="10" placeholder="Write your Query"></textarea>
+  <form method="POST" class="comment-form">
+    {{ form.hidden_tag() }}
+      <input name = 'person_name' type="text" placeholder="Name" required>
+      <input name="person_email" type="email" placeholder="Email" required>
+      <input name="person_mobile" type="text" placeholder="Mobile" maxlength="10" minlength="10" required>
+      <textarea name="person_message" cols="30" rows="10" placeholder="Write your Query" required></textarea>
       <button type="submit">Send</button>
   </form>
 </div>

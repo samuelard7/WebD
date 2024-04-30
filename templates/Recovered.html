@@ -1,0 +1,32 @@
+{% extends 'Base.html' %}
+
+{% block title %}
+Recovery
+{% endblock %}
+
+{% block content %}
+<body>
+<div class="container">
+<form method="POST" class="form-register" style="color:white">
+    {{ form.hidden_tag() }}
+    <h1 class="h3 mb-3 font-weight-normal text-center">
+        Account Recovery
+    </h1>
+     <h3>
+        Please find your username and password below  
+     </h3>
+    <br>
+    <ul >
+        <li class="nav-item active">
+            <h7>Username: </h7>
+        </li>
+        <li class="nav-item">
+            <h7>Password: </h7>
+        </li>
+    </ul>
+   
+
+</form>
+</div>
+</body>
+{% endblock %}

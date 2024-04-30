@@ -12,12 +12,36 @@
 
 {% block content %}
 
-<div>
-<h1 class="text-center"> Welcome Click to play the quiz</h1>
-<h1 class="text-center">
-    <!-- <button type="button" class="btn btn-primary" onclick="{{ url_for('game_play') }};">Play</button> -->
-    <button class="btn btn-secondary " ><a href="/Game">Play</a></button>
-</h1>
-</div>    
+<div class="text-center">
+<h1 class="text-center"> Welcome {{name}}</h1>
+
+<div style="display: flex; 
+justify-content:center;
+ align-items:  center; 
+ flex-wrap: wrap; gap: 20px; background-color:  #212121; padding: 20px; border-radius: 100px;">
+    <div style="background-color:  #212121; padding: 20px; border-radius: 10px; width: 300px;">
+        <h5>Choose a Category</h5> <select name="category" 
+            style="width: 100%; padding: 10px; border: none; border-radius: 15px;" Required>
+            <option value="">Any Category</option>
+            <option value="9">General Knowledge</option>
+            <option value="19">Mathematics</option>
+            <option value="17">Science & Nature</option>
+            <option value="22">Geography</option>
+        </select>
+        <h5>Select Number of Questions</h5>
+          
+    <input type="number" name="no_of_questions" class="form-control" min="1" max="30" value="10" style="width: 100%; padding: 10px; border: none; border-radius: 15px;" Required>
+        <h5>Select Difficulty</h5> 
+        <select name="difficulty"
+            style="width: 100%; padding: 10px; border: none; border-radius: 15px;" Required>
+            <option value="">Any Difficulty</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+    </div>
+</div>
+<button class="btn btn-dark" name="on_submit"><a href="{{ url_for('front_page') }}">Play</a></button>
+</form>    
 
 {% endblock %}
