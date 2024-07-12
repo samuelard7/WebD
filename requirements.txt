@@ -1,3 +1,4 @@
-pip install flask
-pip install wtforms
-pip install sqlalchemy
+flask
+wtforms
+sqlalchemy
+flask_sqlalchemy
