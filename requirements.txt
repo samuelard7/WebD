@@ -2,9 +2,8 @@ flask_wtf
 Flask
 Flask-SQLAlchemy
 WTForms
-bs4
+beautifulsoup4
 forms
-BeautifulSoup
 flask
 psycopg2
 requests
