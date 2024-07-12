@@ -3,6 +3,5 @@ Flask
 Flask-SQLAlchemy
 flask
 psycopg2
-requests
 smtplib
 
