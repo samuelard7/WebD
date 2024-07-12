@@ -2,7 +2,6 @@ from flask import Flask, render_template, redirect, url_for,current_app, flash, 
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.dialects.postgresql import UUID
 from forms import RegisterForm, Recovery, QueryForm
-from bs4 import BeautifulSoup
 import requests
 import smtplib
 import random
@@ -26,7 +25,7 @@ app.config['SECRET_KEY']= '1vcv231xcvxcv23dfg12345jniomoim345'
 my_email = "samuelrichard214@gmail.com"
 password = "ebsv xtyp eeuc pufg"
 
-recipients = ['rs7871@dseu.ac.in','sg7971@dseu.ac.in','sg6888@dseu.ac.in']
+recipients = ['rs7871@dseu.ac.in']
 db = SQLAlchemy(app)
 
 app.app_context().push()
