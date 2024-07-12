@@ -1,4 +1,4 @@
-flask
-wtforms
-sqlalchemy
-flask_sqlalchemy
+
+Flask
+Flask-SQLAlchemy
+WTForms
