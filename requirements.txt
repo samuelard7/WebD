@@ -4,6 +4,7 @@ Flask-SQLAlchemy
 WTForms
 bs4
 forms
+BeautifulSoup
 flask
 psycopg2
 requests
