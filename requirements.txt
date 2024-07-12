@@ -3,5 +3,6 @@ Flask
 Flask-SQLAlchemy
 flask
 psycopg2
+requests 2.32.3
 
 
