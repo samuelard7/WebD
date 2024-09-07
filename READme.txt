@@ -1,8 +1,7 @@
 The source can be found in the following github link :--->
 https://github.com/samuelard7/WebD.git
 
-The project is not fully functional as there are some backend, interaction
- yet to be done. 
+
 The changes can be seen in github main branch.
 
 ###Steps to execute the project
