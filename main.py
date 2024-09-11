@@ -5,6 +5,7 @@ from forms import RegisterForm, Recovery, QueryForm
 import smtplib
 import random
 import psycopg2
+import os
 
 otp_gen = ""
 user_recovery=""
