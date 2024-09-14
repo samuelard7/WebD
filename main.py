@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, url_for,current_app, flash, 
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.dialects.postgresql import UUID
 from forms import RegisterForm, Recovery, QueryForm
-from sqlalchemy.orm import relationship, DeclarativeBase
+from sqlalchemy.orm import relationship, DeclarativeBase, Mapped, mapped_column
 import smtplib
 import random
 from dotenv import load_dotenv
@@ -22,7 +22,6 @@ print(user_noq)
 print(user_diff)
 
 app = Flask(__name__, template_folder="templates")
-app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///posts.db'
 app.config['SECRET_KEY']= os.getenv('Secret_key')
 my_email = "samuelrichard214@gmail.com"
 password = "ebsv xtyp eeuc pufg"
@@ -30,11 +29,11 @@ password = "ebsv xtyp eeuc pufg"
 class Base(DeclarativeBase):
     pass
 recipients = ['rs7871@dseu.ac.in']
+
+
+app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///user.db'
 db = SQLAlchemy(model_class=Base)
 db.init_app(app)
-
-
-app.app_context().push()
 
 
    
@@ -57,11 +56,11 @@ def db_conn():
 #     result = db.Column(db.String(length=10))
 #     userrelate = db.Column(db.Integer(),db.ForeignKey('user.id'))
 class userinfo(db.Model):
-   
-    id = db.Column(db.Integer(),primary_key=True)
-    username = db.Column(db.String(length=30),nullable=False,unique=True)
-    password = db.Column(db.String(length=20),nullable=False)
-    email_address = db.Column(db.String(length=50),nullable=False)
+     __tablename__ = "userinfo"
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    username: Mapped[str] = mapped_column(String(250), unique=True, nullable=False)
+    password: Mapped[str] = mapped_column(String(12), unique=True, nullable=False)
+    email_address: Mapped[str] = mapped_column(String(50), unique=True, nullable=False)
     # entry = db.relationship('Entries',backref='owned_user',lazy=True)
   
   
