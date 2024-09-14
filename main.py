@@ -65,7 +65,13 @@ class userinfo(UserMixin,db.Model):
     password: Mapped[str] = mapped_column(String(12), unique=True, nullable=False)
     email_address: Mapped[str] = mapped_column(String(50), unique=True, nullable=False)
     # entry = db.relationship('Entries',backref='owned_user',lazy=True)
-  
+class userquery(UserMixin,db.Model):
+    __tablename__ = "userquery"
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    Name: Mapped[str] = mapped_column(String(20), unique=True, nullable=False)
+    Mobile: Mapped[str] = mapped_column(String(12), unique=True, nullable=False)
+    Email: Mapped[str] = mapped_column(String(50), unique=True, nullable=False)
+    Message: Mapped[str] = mapped_column(String(250), unique=True, nullable=False)
   
 def otp_generate():
     l = ['0','1','2','3','4','5','6','7','8','9']
