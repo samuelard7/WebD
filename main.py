@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, url_for,current_app, flash, 
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.dialects.postgresql import UUID
 from forms import RegisterForm, Recovery, QueryForm
+from sqlalchemy.orm import relationship, DeclarativeBase
 import smtplib
 import random
 from dotenv import load_dotenv
