@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.dialects.postgresql import UUID
 from forms import RegisterForm, Recovery, QueryForm
 from sqlalchemy.orm import relationship, DeclarativeBase, Mapped, mapped_column
+from sqlalchemy import Integer, String, Text
+from functools import wraps
 import smtplib
 import random
 from dotenv import load_dotenv
