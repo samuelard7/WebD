@@ -2,7 +2,8 @@ flask-wtf
 Flask
 Flask-SQLAlchemy
 flask
-psycopg2
-dotenv
+gunicorn==21.2.0
+psycopg2-binary==2.9.9
+python-dotenv
 
 
