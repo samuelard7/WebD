@@ -31,7 +31,7 @@ class Base(DeclarativeBase):
 recipients = ['rs7871@dseu.ac.in']
 
 
-app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///user.db'
+app.config['SQLALCHEMY_DATABASE_URI']='postgresql://blog_db_21ai_user:D7uzGV9VlnUxb6Gi98svNteylxybbqF5@dpg-crcaaulumphs73djb0ng-a/blog_db_21ai'
 db = SQLAlchemy(model_class=Base)
 db.init_app(app)
 
