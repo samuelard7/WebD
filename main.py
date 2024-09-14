@@ -21,7 +21,7 @@ print(user_noq)
 print(user_diff)
 
 app = Flask(__name__, template_folder="templates")
-app.config['SQLALCHEMY_DATABASE_URI']=os.getenv('DB_URI')
+app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///posts.db'
 app.config['SECRET_KEY']= os.getenv('Secret_key')
 my_email = "samuelrichard214@gmail.com"
 password = "ebsv xtyp eeuc pufg"
