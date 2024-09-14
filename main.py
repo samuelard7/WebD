@@ -35,15 +35,14 @@ app.app_context().push()
    
 
 def db_conn():
-    conn = psycopg2.connect(dbname = "user", 
-                        user = "quiztriviadb", 
-                        host= 'localhost',
-                        password = "password",
+    conn = psycopg2.connect(dbname = "blog_db_21ai", 
+                        user = "blog_db_21ai_user", 
+                        host= 'dpg-crcaaulumphs73djb0ng-a',
+                        password = "D7uzGV9VlnUxb6Gi98svNteylxybbqF5",
                         port = 5432)
 
     return conn
 
-         
 # class Entries(db.Model):
 #     __tablename__='owned_user'
 #     id = db.Column(db.Integer(),primary_key=True)
