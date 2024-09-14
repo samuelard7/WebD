@@ -56,7 +56,7 @@ def db_conn():
 #     result = db.Column(db.String(length=10))
 #     userrelate = db.Column(db.Integer(),db.ForeignKey('user.id'))
 class userinfo(db.Model):
-     __tablename__ = "userinfo"
+    __tablename__ = "userinfo"
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     username: Mapped[str] = mapped_column(String(250), unique=True, nullable=False)
     password: Mapped[str] = mapped_column(String(12), unique=True, nullable=False)
