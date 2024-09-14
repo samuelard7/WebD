@@ -20,7 +20,7 @@ print(user_noq)
 print(user_diff)
 
 app = Flask(__name__, template_folder="templates")
-app.config['SQLALCHEMY_DATABASE_URI']=postgresql://quiztriviadb:password@localhost/user
+app.config['SQLALCHEMY_DATABASE_URI']='postgresql://quiztriviadb:password@localhost/user'
 app.config['SECRET_KEY']= '1vcv231xcvxcv23dfg12345jniomoim345'
 my_email = "samuelrichard214@gmail.com"
 password = "ebsv xtyp eeuc pufg"
