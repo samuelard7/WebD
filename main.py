@@ -26,8 +26,12 @@ app.config['SECRET_KEY']= os.getenv('Secret_key')
 my_email = "samuelrichard214@gmail.com"
 password = "ebsv xtyp eeuc pufg"
 
+class Base(DeclarativeBase):
+    pass
 recipients = ['rs7871@dseu.ac.in']
-db = SQLAlchemy(app)
+db = SQLAlchemy(model_class=Base)
+db.init_app(app)
+
 
 app.app_context().push()
 
