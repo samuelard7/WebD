@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, url_for,current_app, flash, request
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.dialects.postgresql import UUID
+from flask_login import UserMixin
 from forms import RegisterForm, Recovery, QueryForm
 from sqlalchemy.orm import relationship, DeclarativeBase, Mapped, mapped_column
 from sqlalchemy import Integer, String, Text
@@ -57,7 +58,7 @@ def db_conn():
 #     difficulty = db.Column(db.String(length=10),nullable=False)
 #     result = db.Column(db.String(length=10))
 #     userrelate = db.Column(db.Integer(),db.ForeignKey('user.id'))
-class userinfo(db.Model):
+class userinfo(UserMixin,db.Model):
     __tablename__ = "userinfo"
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     username: Mapped[str] = mapped_column(String(250), unique=True, nullable=False)
