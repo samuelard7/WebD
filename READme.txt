@@ -1,12 +1,12 @@
-# Quiz Website
+#Quiz Website
 
-## The source can be found in the following github link :--->
+##The source can be found in the following github link :--->
 https://github.com/samuelard7/WebD.git
 
 
 The changes can be seen in github main branch.
 
-### Steps to execute the project
+###Steps to execute the project
 
 1. main.py should be executed
 
