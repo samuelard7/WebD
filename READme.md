@@ -21,7 +21,9 @@ The changes can be seen in github main branch.
 Flask
 Wtforms
 SQLAlchemy
-6. Installing Guidance:
+
+#### 6. Installing Guidance:
+
 Inside the terminal of vs code 
 pip install flask
 pip install wtforms
