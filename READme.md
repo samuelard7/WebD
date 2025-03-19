@@ -25,9 +25,7 @@ SQLAlchemy
 #### 6. Installing Guidance:
 
 Inside the terminal of vs code 
-pip install flask
-pip install wtforms
-pip install sqlalchemy
+pip install flask wtforms sqlalchemy
 
 6. For managing the database 
 Install pgAdmin 4 
